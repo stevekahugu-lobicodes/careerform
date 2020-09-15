@@ -51,10 +51,13 @@ if (isset($_POST['submit']))
         $coverletter = $_FILES["coverletter"];
 
    $directoryName = '/home/isobarke/domains/isobarkenya.com/public_html/kaa/website_preview/modules/mod_careerform/images/' . $str_server_now . '/';
+ 
     //check if directory exist.
     if(!is_dir($directoryName)){
-    mkdir($directoryName, 0755, true);
-    }
+     
+         mkdir($directoryName, 0755, true);
+     
+      }
     //upload resume name and path
     $tmp_resume_name = $_FILES['resume']['tmp_name'];
     $newresumePath = "/home/isobarke/domains/isobarkenya.com/public_html/kaa/website_preview/modules/mod_careerform/images/". $str_server_now . "/" .$_FILES["resume"]["name"];
@@ -62,8 +65,8 @@ if (isset($_POST['submit']))
     $tmp_coverletter_name = $_FILES['coverletter']['tmp_name'];
     $newcoverletterPath = "/home/isobarke/domains/isobarkenya.com/public_html/kaa/website_preview/modules/mod_careerform/images/". $str_server_now . "/" .$_FILES["coverletter"]["name"];
     #TO move the uploaded file to specific location
-    //move_uploaded_file($tmp_resume_name, $newresumePath);
-    //move_uploaded_file($tmp_coverletter_name, $newcoverletterPath);
+    move_uploaded_file($tmp_resume_name, $newresumePath);
+    move_uploaded_file($tmp_coverletter_name, $newcoverletterPath);
 
     echo "<div class='success'><p>Your Submition has been recived. Thank you  we will contact you shortly.</p></div>";
     
